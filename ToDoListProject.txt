@@ -1,0 +1,98 @@
+companeros, buen día muchas gracias...
+
+Estamos tratando de dockerizar el GraphQL para hacer la parte de products y categories desde el gateway, pero el auth y el registro de usuarios así como el de Orders del Carrito de compras si es para hacerlo desde la API Rest.
+
+La lista de tareas y los endpoints son:
+
+----------------------
+products y categories
+----------------------
+Nota: 	estamos pendientes de dockerizar esta parte para tener como endpoints los del gateway
+	el endpoint del graphql (Gateway) es:  
+		https://doker-apis-p12c4g2.herokuapp.com/
+
+los enlaces siguientes son los de la API Rest, pero como les decia la idea es acceder por GraphQL.
+publicar toda la lista de productos en la landing page del sitio...
+	- http://doker-product-p12c4g2.herokuapp.com/products/products/
+cargar la tabla de categorias en la landing page
+	- http://doker-product-p12c4g2.herokuapp.com/products/category-products/
+filtrar los productos por la categoria.
+	-  mismos dos anteriores
+al seleccionar el boton de ver mas en cada una de las cards, traer la información detallada de cada producto.
+	- http://doker-product-p12c4g2.herokuapp.com/products/products/{id}
+capturar el valor agregado en cantidad de producto para enviar a la lista del carrito o uno si se hace desde la landing page con la posibilidad de editar en la tabla del carrito.
+
+
+--------------
+Auth y Users
+--------------
+registrar un nuevo cliente
+-  https://doker-auth-p12c4g2.herokuapp.com/users/ 
+la estructura del json para crearlos es:
+{
+    	"password": "",
+    	"username": "",
+    	"email": "algo@correo.com",
+    	"name": "",
+    	"last_name": "",
+	"is_active": true, 	#Nota*: desde la interfaz que hablamos este valor debe permanecer por defecto como true
+    	"is_staff": false  	#Nota*: desde la interfaz que hablamos este valor debe permanecer por defecto como false
+}
+login al sistema
+- https://doker-auth-p12c4g2.herokuapp.com/login/
+se pasan username y password
+por defecto es: admin - admin
+y devuelve este json
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjM4ODQwNjM2LCJpYXQiOjE2Mzg4MzM0MzYsImp0aSI6ImFhNDkyODkzOGMxZjRiYTc4NzgzY2M2NTlkOWE3MGE1IiwidXNlcl9pZCI6MX0.ByPuWYIpBpZ67YFNke68OBEagsehu5s5x5Y1vLXJ8S4",
+    "refresh-token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYzODkxOTgzNiwiaWF0IjoxNjM4ODMzNDM2LCJqdGkiOiI3YmVlYWUyNzNjYjE0MzQ3YWNlNGZmMjY3MzEzMDQ4YiIsInVzZXJfaWQiOjF9.ETfp8CE8Q5gFnazrLE5a4J-TWNRzNaPW2l3UVbbPckQ",
+    "user": {
+        "username": "admin",
+        "email": "admin@ejemplo.com",
+        "name": "Reinaldo José",
+        "last_name": "Carrillo Roldán"
+    },
+    "message": "Inicio de Sesion Existoso"
+}
+
+---------------------
+carrito de compras
+---------------------
+para el carrito necesitamos hacer los calculos en la tabla del carrito de:
+subtotal: precio del producto por cantidad.
+Total: suma de los subtotales de los items de la tabla del carrito
+
+al dar click en pagar se debe crear un registro de la factura al endpoint:
+https://doker-java-p12c4g2.herokuapp.com/orders/newOrder
+el json para registrar es:
+{
+    	"id":3,				#Nota*: Toca poner explicitamente el id
+	"numberInvoice":"",
+	"customerId":,			#Nota*: de tipo integer 
+    	"createAt":"",
+    	"items":[					#Nota*: Por cada item de producto este seria el arreglo
+        	{
+    			"numberInvoice": "",
+    			"productId":, 	Integer
+    			"quantity": ,	Integer
+    			"subTotal": 	Double
+		},
+		{
+    			"numberInvoice": "qwe0987",
+    			"productId":6,
+    			"quantity": 10,
+    			"subTotal": 500.0
+		}
+    	],
+	"totalCompra":5000.0
+}
+
+y se debe mostrar la información del registro exitoso una vez se ha dado click en pagar en la parte inferior.  el endpoint del registro (getInvoiceByNumberInvoice) es
+-  https://doker-java-p12c4g2.herokuapp.com/orders/getInvoice/{numberInvoice}
+Nota: tenemos estos registros de number invoice en la base de datos: tar1234, ter4321, 
+es necesario mostrar explicitamente la informacion del invoice creado porque es el unico get que tenemos de ese microservicio.
+
+
+
+
+
