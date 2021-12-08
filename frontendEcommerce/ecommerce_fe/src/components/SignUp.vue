@@ -8,25 +8,21 @@
             <span class="card-title">Complete los siguientes datos para crear una cuenta</span>
           </div>
           <div class="card-body bg-dark">
-            <form>
+            <form v-on:submit.prevent="processSignUp">
               <div class="p-3 col-12">
-                <input type="text" class="col-12" placeholder="Firstname" />
+                <input type="text" v-model="user.name" class="col-12" placeholder="Nombre" />
               </div>
               <div class="p-3 col-12">
-                <input type="text" class="col-12" placeholder="Lastname" />
+                <input type="text" v-model="user.lastName" class="col-12" placeholder="Apellido" />
               </div>
               <div class="p-3 col-12">
-                <input type="email" class="col-12" placeholder="Email" />
+                <input type="text" v-model="user.username" class="col-12" placeholder="Nombre de usuario" />
               </div>
               <div class="p-3 col-12">
-                <input type="password" class="col-12" placeholder="Password" />
+                <input type="email" v-model="user.email" class="col-12" placeholder="Email" />
               </div>
               <div class="p-3 col-12">
-                <input
-                  type="password"
-                  class="col-12"
-                  placeholder="Confirm Password"
-                />
+                <input type="password" v-model="user.password" class="col-12" placeholder="Contraseña" />
               </div>
             </form>
           </div>
@@ -47,7 +43,50 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+
+export default {
+  name: "SignUp",
+
+  data: function(){
+    return {
+      user: {
+        name: "",
+        lastName: "",
+        username: "",
+        email: "",
+        isActive: true,
+        isStaff: false
+      }
+    }
+  },
+
+  methods: {
+    processSignUp: function() {
+      axios.post(
+        "https://doker-auth-p12c4g2.herokuapp.com/users/",
+        this.user,
+        {headers: {}}
+      )
+      .then((result) => {
+        let dataSignUp = {
+          name: this.user.name,
+          last_name: this.user.lastName,
+          username: this.user.username,
+          email: this.user.email,
+          is_active: this.user.isActive,
+          is_staff: this.user.isStaff
+        }
+
+        this.$emit('completedSignUp', dataSignUp)
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Error: Fallo en el registro.")
+      })
+    }
+  }
+};
 </script>
 
 <style>

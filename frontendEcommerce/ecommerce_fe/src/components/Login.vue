@@ -8,23 +8,25 @@
             <span class="card-title">Ingrese sus credenciales de Acceso</span>
           </div>
           <div class="card-body bg-dark">
-            <form>
+            <form v-on:submit.prevent="processLogInUser">
               <div class="p-3 col-12">
-                <input type="email" class="col-12" placeholder="Email" />
+                <input type="text" v-model="user.username" class="col-12" placeholder="Username" />
               </div>
               <div class="p-3 col-12">
-                <input type="password" class="col-12" placeholder="Password" />
+                <input type="password" v-model="user.password" class="col-12" placeholder="Password" />
               </div>
-            </form>
-          </div>
-          <div class="card-footer">
-            <div class="d-flex justify-content-center links">
               <button
+                type= "submit"
                 class="text-decoration-none link-light btn btn-lg"
                 style="background-color: #8b8c3c"
               >
                 Accede
               </button>
+            </form>
+          </div>
+          <div class="card-footer">
+            <div class="d-flex justify-content-center links">
+              
             </div>
           </div>
         </div>
@@ -34,7 +36,53 @@
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+
+export default {
+  name: "Login",
+
+  data: function() {
+    return {
+      user: {
+        username: "",
+        password: ""
+      }
+    }
+  },
+
+  methods: {
+    processLogInUser: function() {
+      console.log(this.user);
+      axios.post(
+        "https://doker-auth-p12c4g2.herokuapp.com/login/",
+        this.user,
+        {headers: {}}
+        )
+        .then(result => {
+            console.log(result.data)
+
+            let dataLogin = {
+              token_access: result.data.token,
+              username: result.data.user.username,
+              name: result.data.user.name,
+              lastname: result.data.user.last_name,
+              email: result.data.user.email,
+              message: result.data.message,
+            
+            }
+           
+            // console.log(dataLogin)
+            this.$emit('completedLogIn', dataLogin)
+            console.log("pasó");
+        })
+        .catch((error) => {
+
+          if (error.response.status == "401")
+            alert("ERROR 401: Credenciales Incorrectas.");
+        })
+    }
+  }
+};
 </script>
 
 <style>
