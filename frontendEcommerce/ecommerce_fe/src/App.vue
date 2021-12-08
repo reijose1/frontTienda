@@ -19,7 +19,7 @@
             <li class="nav-item">
               <router-link class="nav-link active" to="/">Mercado</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!is_auth">
               <router-link class="nav-link" to="/Login">Inicia Sesión</router-link>
             </li>
             <li class="nav-item dropdown">
@@ -100,6 +100,50 @@
     <!-- Footer -->
   </div>
 </template>
+
+<script>
+
+
+export default {
+  name: 'App',
+
+  data: function(){
+    return {
+      is_auth: false
+    }
+  },
+
+  methods: {
+    verifyAuth: function() {
+    if(this.is_auth == false)
+    this.$router.push({name: "login"})
+    },
+    loadLogIn: function(){
+    this.$router.push({name: "login"})
+    },
+    loadSignUp: function(){
+    this.$router.push({name: "signUp"})
+   },
+   completedLogIn: function(data) {
+      localStorage.setItem("isAuth", true);
+      localStorage.setItem("username", data.username);
+      localStorage.setItem("lastname", data.lastname);
+      localStorage.setItem("token_access", data.token_access);
+      localStorage.setItem("token_refresh", data.token_refresh);
+      alert("Autenticación Exitosa");
+      // this.verifyAuth();
+    },
+    completedSignUp: function(data) {
+      alert("Registro Exitoso");
+      this.completedLogIn(data);
+    },
+    created: function() {
+      this.verifyAuth()
+    }
+  }
+}
+</script>
+
 
 <style lang="scss">
 #app {
