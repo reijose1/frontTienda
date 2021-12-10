@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Mi Tienda Online</a>
+        <a class="navbar-brand" href="#">Mi Tienda Online</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -20,7 +20,9 @@
               <router-link class="nav-link active" to="/">Mercado</router-link>
             </li>
             <li class="nav-item" v-if="!is_auth">
-              <router-link class="nav-link" to="/Login">Inicia Sesión</router-link>
+              <router-link class="nav-link" to="/Login"
+                >Inicia Sesión</router-link
+              >
             </li>
             <li class="nav-item dropdown">
               <a
@@ -33,11 +35,22 @@
                 >Tiendas</a
               >
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Todos los productos</a></li>
+                <li>
+                  <a class="dropdown-item" href="#">Todos los productos</a>
+                </li>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#!">Mas populares</a></li>
-                <li><a class="dropdown-item" href="#!">Nuevos productos</a></li>
+                <li><a class="dropdown-item" href="#">Mas populares</a></li>
+                <li><a class="dropdown-item" href="#">Nuevos productos</a></li>
               </ul>
+            </li>
+            <li class="nav-item">
+              <button
+                class="nav-link logout-Button"
+                v-if="is_auth"
+                v-on:click="logOut"
+              >
+                Cerrar Sesión
+              </button>
             </li>
           </ul>
           <form class="d-flex">
@@ -51,7 +64,10 @@
       </div>
     </nav>
     <!-- Header-->
-    <header class="text-center py-2 text-white" style="background-color: #8b8c3c">
+    <header
+      class="text-center py-2 text-white"
+      style="background-color: #8b8c3c"
+    >
       <div class="container px-2 px-lg-5 my-1">
         <div class="text-center text-white">
           <img id="logo" src="./assets/logo.png" alt="logo" />
@@ -75,12 +91,16 @@
       <!-- Grid container -->
       <div class="container p-4 pb-0">
         <!-- Section: CTA -->
-        <section class="">
+        <section class="" v-if="!is_auth">
           <p class="d-flex justify-content-center align-items-center">
             <span class="me-3">Registrate para poder comprar</span>
-            <router-link to="/SignUp"><button class="btn btn-light btn-outline-dark btn-rounded">
-              <span class="me-3 mx-3 text-md-start text-center">Registrate!</span>
-            </button></router-link>
+            <router-link to="/SignUp"
+              ><button class="btn btn-light btn-outline-dark btn-rounded">
+                <span class="me-3 mx-3 text-md-start text-center"
+                  >Registrate!</span
+                >
+              </button></router-link
+            >
           </p>
         </section>
         <!-- Section: CTA -->
@@ -102,46 +122,55 @@
 </template>
 
 <script>
-
-
 export default {
-  name: 'App',
+  name: "App",
 
-  data: function(){
+  data: function () {
     return {
-      is_auth: false
-    }
+      is_auth: false,
+    };
   },
 
   methods: {
-    verifyAuth: function() {
-    if(this.is_auth == false)
-    this.$router.push({name: "login"})
+    verifyAuth: function () {
+      this.is_auth = localStorage.getItem("isAuth") || false;
+
+      if (this.is_auth == false) this.$router.push({ name: "Login" });
+      else this.$router.push({ name: "Home" });
     },
-    loadLogIn: function(){
-    this.$router.push({name: "login"})
+    loadLogIn: function () {
+      this.$router.push({ name: "login" });
     },
-    loadSignUp: function(){
-    this.$router.push({name: "signUp"})
-   },
-   completedLogIn: function(data) {
+    loadSignUp: function () {
+      this.$router.push({ name: "signUp" });
+    },
+    completedLogIn: function (data) {
       localStorage.setItem("isAuth", true);
       localStorage.setItem("username", data.username);
       localStorage.setItem("lastname", data.lastname);
       localStorage.setItem("token_access", data.token_access);
       localStorage.setItem("token_refresh", data.token_refresh);
       alert("Autenticación Exitosa");
-      // this.verifyAuth();
+      this.verifyAuth();
     },
-    completedSignUp: function(data) {
+    completedSignUp: function (data) {
       alert("Registro Exitoso");
       this.completedLogIn(data);
     },
-    created: function() {
-      this.verifyAuth()
-    }
-  }
-}
+    loadHome: function () {
+      this.$router.push({ name: "home" });
+    },
+
+    logOut: function () {
+      localStorage.clear();
+      alert("Sesión Cerrada");
+      this.verifyAuth();
+    },
+    created: function () {
+      this.verifyAuth();
+    },
+  },
+};
 </script>
 
 
@@ -173,5 +202,10 @@ export default {
 
 #logo2 {
   width: 200px;
+}
+
+.logout-Button{
+    border: none;
+    background-color: #f8f9fa;
 }
 </style>

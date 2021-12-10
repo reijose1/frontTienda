@@ -4,6 +4,7 @@ import ProductsHome from '../components/ProductsHome.vue'
 import ProductDetail from '../components/ProductDetail.vue'
 import SignUp from '../components/SignUp.vue'
 import CartTable from '../components/CartTable.vue'
+import Home from '../components/Home.vue'
 
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     path: '/SignUp',
     name: 'SignUp',
     component: SignUp
+  },
+  {
+    path: '/Home',
+    name: 'Home',
+    component: Home
   },
   {
     path: '/about',
