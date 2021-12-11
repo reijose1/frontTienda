@@ -133,8 +133,7 @@ export default {
       localStorage.setItem("measure_unit", x.measure_unit);
       localStorage.setItem("category_product", x.category_product);
       localStorage.setItem("price", x.price);
-      localStorage.setItem("stock", x.stock);      
-      console.log(localStorage.getItem("image"))
+      localStorage.setItem("stock", x.stock);
       this.$router.push({ name: "ProductDetail" });
     },
 
