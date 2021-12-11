@@ -1,8 +1,8 @@
 <template>
   <div id="body">
-    <div class="container h-100">
+    <div class="container h-100 py-5">
       <div class="d-flex justify-content-center align-items-center h-100">
-        <div class="card">
+        <div class=" myCard card py-5">
           <div class="card-header">
             <h3>Registro de Usuarios</h3>
             <span class="card-title">Complete los siguientes datos para crear una cuenta</span>
@@ -100,6 +100,11 @@ h3 {
 }
 .card {
   -webkit-backdrop-filter: blur(20px);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
   /*backdrop-filter: blur(20px);*/
   border-radius: 15px;
 }
@@ -114,7 +119,7 @@ h3 {
 input {
   padding: 0.2em;
   background: rgba(255, 255, 255, 0.06);
-  border: 0;
+  border: 1;
   color: #ddd;
   outline: none;
 }

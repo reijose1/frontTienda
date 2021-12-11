@@ -3,14 +3,14 @@
     <div class="container px-4 px-lg-5 my-5">
       <div class="row gx-4 gx-lg-5 align-items-center">
         <div class="col-md-6">
-          <img class="card-img-top mb-5 mb-md-0" v-bind:src="image" alt="..." />
+          <img class=" myImg card-img-top mb-5 mb-md-0" v-bind:src="image" alt="..." />
         </div>
         <div class="col-md-6">
           <div class="small mb-1">Categoria: {{ category_product }}</div>
           <h2 class="display-5 fw-bolder">{{ name }}</h2>
-          <h5 class="small mb-3 fw-light">
+          <h4 class="small mb-3 fw-light">
             Unidad de Medida: {{ measure_unit }}
-          </h5>
+          </h4>
           <div class="fs-5 mb-5">
             <span>COP $ {{ price }}</span>
           </div>
@@ -19,11 +19,11 @@
             {{ description }}
           </p>
           <div class="d-flex justify-content-center">
-            <h5 class="small mb-3 fw-light">
-              Cantidad disponible: {{ stock }}
-            </h5>
+            <h4 class="small mb-3 fw-light">
+              Cantidad disponible: <h4> {{ stock }} </h4>
+            </h4>
           </div>
-          <h6>Ingresa la cantidad que deseas</h6>
+          <h5>Ingresa la cantidad que deseas</h5>
           <br />
           <div class="btn-group" role="group" aria-label="Basic example">
             <input
@@ -62,4 +62,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+  .myImg {
+    height: 600px;
+    width: 500px;
+  }
+</style>

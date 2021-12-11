@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 px-lg-5 mt-5 py-5">
+  <div class="px-4 mt-3 py-3" >
     <!--seccion de las categorias -->
         <div class="mySecCat-1 col-mb-1">
           <div>
@@ -43,9 +43,9 @@
           </div>
         </div>
     <div>
-      <div class="mySecCat">        
+      <div class="mySecCat d-flex justify-content-end mb-1">        
         <!--seccion de las categorias -->
-        <div class="mySecCat-2 col mb-5">
+        <div class="mySecCat-2 col mb-1">
           <div class="card" v-for="product in products" :key="product.id">
             <!-- Product image-->
             <img class="card-img-top" v-bind:src="product.image" alt="..." />
@@ -143,30 +143,43 @@ export default {
 
 </script>
 <style scoped>
+
+
 .mySecCat-1 {
   position: absolute;
   z-index: 10;
   left: 50px;
 }
 
+.mySecCat{
+  display:inline-flex;
+  justify-content: flex-end;
+  position: relative;
+  flex-wrap: wrap;
+  margin-left: 300px;
+  
+}
+
 .mySecCat-2 {
-  display: flex;
-  justify-content: space-around;
+  display: inline-flex;
   flex-wrap: wrap;
   width: 100%;
-  background: #eeecec;
+  
 }
 
 .card {
-  width: 350px;
+  width: 300px;
   height: 450px;
-  margin: 10px;
+  margin: 5px;
+  padding: 2px;
   border: 2px solid black;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .card img {
   width: 50%;
   height: 200px;
-  
+  display: inline-flex;
+  margin-left: 70px;
 }
 </style>
