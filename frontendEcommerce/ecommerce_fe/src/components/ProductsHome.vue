@@ -1,17 +1,8 @@
 <template>
-  <div class="container px-4 px-lg-5 mt-5 py-5">
-    <div>
-      <div
-        class="
-          row
-          gx-4 gx-lg-5
-          row-cols-2 row-cols-md-3 row-cols-xl-4
-          justify-content-center
-        "
-      >
-        <!--seccion de las categorias -->
-        <div class="col-mb-1">
-          <div class="input-group">
+  <div class="px-4 px-lg-5 mt-5 py-5">
+    <!--seccion de las categorias -->
+        <div class="mySecCat-1 col-mb-1">
+          <div>
             <div class="input-group-text" id="btnGroupAddon">Categoria</div>
             <input
               type="text"
@@ -20,7 +11,7 @@
               aria-label="Input group"
               aria-describedby="btnGroupAddon"
             />
-            <div>
+            <div class="">
               <table class="table">
                 <thead>
                   <tr>
@@ -51,8 +42,10 @@
             </div>
           </div>
         </div>
+    <div>
+      <div class="mySecCat">        
         <!--seccion de las categorias -->
-        <div class="col mb-5">
+        <div class="mySecCat-2 col mb-5">
           <div class="card" v-for="product in products" :key="product.id">
             <!-- Product image-->
             <img class="card-img-top" v-bind:src="product.image" alt="..." />
@@ -74,11 +67,9 @@
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <button class="btn btn-outline-dark mt-auto">Agrega</button> |
-                <button class="btn btn-outline-dark mt-auto">
-                  <router-link class="text-decoration-none" to="/ProductDetail"
-                    >Ver mas</router-link
-                  >
+                <button class="btn btn-outline-dark mt-auto">Agrega</button> &nbsp;
+                <button class="btn btn-outline-dark mt-auto" v-on:click="verDetalle(product)">
+                  Ver mas
                 </button>
               </div>
             </div>
@@ -92,7 +83,7 @@
 import gql from "graphql-tag";
 
 export default {
-  name: "Account",
+  name: "ProductHome",
   data: function () {
     return {
       products: [],
@@ -133,6 +124,49 @@ export default {
     this.$apollo.queries.categories.refetch();
     console.log(this.categories);
   },
-};
+  methods: {
+    verDetalle: function(x){
+      localStorage.setItem("id",x.id);
+      localStorage.setItem("name",x.name);
+      localStorage.setItem("description",x.description);
+      localStorage.setItem("image", x.image);
+      localStorage.setItem("measure_unit", x.measure_unit);
+      localStorage.setItem("category_product", x.category_product);
+      localStorage.setItem("price", x.price);
+      localStorage.setItem("stock", x.stock);      
+      console.log(localStorage.getItem("image"))
+      this.$router.push({ name: "ProductDetail" });
+    },
+
+    }
+  };
+
 </script>
-<style></style>
+<style scoped>
+.mySecCat-1 {
+  position: absolute;
+  z-index: 10;
+  left: 50px;
+}
+
+.mySecCat-2 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  background: #eeecec;
+}
+
+.card {
+  width: 350px;
+  height: 450px;
+  margin: 10px;
+  border: 2px solid black;
+}
+
+.card img {
+  width: 50%;
+  height: 200px;
+  
+}
+</style>
