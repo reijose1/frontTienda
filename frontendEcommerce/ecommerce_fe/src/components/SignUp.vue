@@ -32,7 +32,7 @@
                 class="text-decoration-none link-light btn btn-lg"
                 style="background-color: #8b8c3c"
               >
-                Sign In
+                Hazte nuestro cliente
               </button>
             </div>
           </div>
@@ -107,7 +107,7 @@ h3 {
   position: absolute;
   /*backdrop-filter: blur(20px);*/
   border-radius: 15px;
-  margin-top: 15em;
+  margin-top: 12em;
   margin-bottom: 5em;
 }
 .card-header,
