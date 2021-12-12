@@ -1,4 +1,4 @@
-<template>
+i<template>
   <section id="body">
     <div class="card h-70" style="width: 20rem">
       <div class="card-body">
@@ -7,7 +7,7 @@
             Bienvenido
           </h5>
           <h5 class="card-text align-items-center" style="color: white">
-            {{ name }} {{last_name}}
+            {{ username }}
           </h5>
         </div>
         <br />
@@ -15,39 +15,56 @@
       </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="card">
-          <div class="card-header">Carrito de compras</div>
-          <div class="card-body">
-            <p class="card-text">
-              Puedes ir a pagar tu pedido con total seguridad.
-            </p>
-            <router-link class="btn btn-info list-group-item" to="/cartTable"
-              >Llevame Allí</router-link
-            >
+      <div class="row py-5 mt-5 pt-lg-5 pt-5">
+        <div class="miStUn col col-4 col-md-4">
+          <div class=" miCard card">
+            <div class="card-header"><strong><h4 class="text-color-light fw-bold">Carrito de Compras</h4> </strong></div>
+            <img class="miImgChiquita" 
+            src="https://media.istockphoto.com/photos/friendly-customer-couple-paying-for-their-groceries-with-credit-card-picture-id1152067793?k=20&m=1152067793&s=170667a&w=0&h=Bwyfy1m_exj1LZttFVkA9dmpaVhagOF3DN4ZeWsBwiY=" alt="pagar"/>
+            <div class="card-body d-grid gap-1">
+              <p class="card-text">
+                Puedes ir a pagar tu pedido con total seguridad.
+              </p>
+              <router-link class="miBtnUn btn btn-secondary list-group-item" to="/cartTable"
+                ><div class="py-3 my-1"><h5 class="text-black fw-bold">Llevame Allí</h5></div></router-link
+              >
+            </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header">Nuestro mercado</div>
-          <div class="card-body">
-            <p class="card-text">
-              Puedes continuar agregando productos a tu carrito si lo deseas.
-            </p>
-            <router-link class="btn btn-info list-group-item" to="/"
-              >Llevame Allí</router-link
-            >
+        <div class="col col-4 col-md-4">
+          <div class="miCard card">
+            <div class="card-header"><strong><h4 class="text-color-light fw-bold">Nuestro Mercado</h4></strong></div>
+            <img class="miImgChiquita" 
+            src="https://bodytech.com.co/uploads/post/f64caff5332b44ab939e57785a94e367/mercado-compras-saludables-ideales-1_1920x854.jpg" alt="pagar"/>
+            <div class="card-body d-grid gap-1">
+              <p class="card-text">
+                Puedes continuar agregando productos a tu carrito si lo deseas.
+              </p>
+              <router-link class="btn btn-secondary list-group-item" to="/"
+                >
+                <div class="py-3 my-1"><h5 class="text-black fw-bold">Llevame Allí</h5> </div></router-link
+              >
+            </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header">Cerrar Sesión</div>
-          <div class="card-body">
-            <p class="card-text">
-              Queremos tenerte siempre con nosotros, pero si debes ausentarte,
-              esperamos verte pronto por acá.
-            </p>
-            <router-link class="btn btn-info list-group-item" to="/Login"
-              >Cerrar Sesión</router-link
-            >
+        <div class="col col-4 col-md-4">
+          <div class="card miCard">
+            <div class="card-header"><strong><h4 class="text-color-light fw-bold">Cerrar Sesión</h4></strong></div>
+            <img class="miImgChiquita" 
+            src="https://st.depositphotos.com/1011643/4757/i/600/depositphotos_47579171-stock-photo-store-employee-with-crossed-arms.jpg" alt="pagar"/>
+            <div class="card-body d-grid gap-2">
+              <p class="card-text text-center text-wrap">
+                Queremos tenerte siempre con nosotros, pero si debes ausentarte,
+                esperamos verte pronto por acá.
+              </p>
+              <router-link class="btn btn-outline-dark btn-rounded list-group-item" to="/Login"
+                >
+                <div class="py-2"><h5 class="text-black py-0 fw-bold">
+                  Cerrar Sesión</h5>
+                </div>
+                </router-link
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -59,7 +76,7 @@ export default {
   name: "Home",
   data: function () {
     return {
-      name: localStorage.getItem("name") || "none",
+      name_user: localStorage.getItem("name") || "none",
       last_name: localStorage.getItem("last_name") || "none",
       username: localStorage.getItem("username") || "none",
     };
@@ -79,11 +96,35 @@ export default {
   justify-content: center;
 }
 
+.miStUn{
+  height: 80px;
+}
+
+.miCard{
+  background-color:darkslategrey!important;
+  height: 400px;
+  color: aliceblue;
+}
+
 .card-user {
   background-color: #8b8c3c;
   border-radius: 15px;
 }
 .card-cs {
   color: black;
+}
+
+.miBtnUn{
+  position: relative;
+  bottom: 0.1em;
+}
+
+.miImgChiquita{
+  margin: 0 auto;
+  padding: 0.5em;
+  height: 150px;
+  width: 200px;
+  justify-content: center;
+  
 }
 </style>

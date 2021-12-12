@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="miHeader">
+    <nav class="nav minav navbar navbar-expand-lg navbar-light bg-light">
       <div class="container px-4 px-lg-5">
         <a class="navbar-brand" href="#">Mi Tienda Online</a>
         <button
@@ -53,29 +53,39 @@
               </button>
             </li>
           </ul>
-          <form class="d-flex">
-            <button class="btn btn-outline-dark" type="submit">
+          <form class="d-flex text-decoration-none">
+            <button class="btn btn-outline-dark " type="submit">
               <i class="bi-cart-fill me-1"></i>
-              <router-link to="/cartTable">Carrito</router-link>
-              <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+              <router-link class="text-decoration-none text-black-50" to="/cartTable">Carrito</router-link>
+              <span class="badge bg-dark text-white ms-1 rounded-pill">{{quantity}}</span>
             </button>
           </form>
         </div>
       </div>
     </nav>
     <!-- Header-->
-    <header
-      class="text-center py-2 text-white"
-      style="background-color: #8b8c3c"
-    >
-      <div class="container px-2 px-lg-5 my-1">
-        <div class="text-center text-white">
-          <img id="logo" src="./assets/logo.png" alt="logo" />
-          <img id="logo2" src="./assets/logo2.png" alt="logo" />
-          <h1 class="display-4 fw-bolder">Proyecto ciclo 4 - Desarrollo Web</h1>
+    <div class="row py-2">
+      <header
+        class="text-center py-2 text-white"
+        style="background-color: #8b8c3c"
+      >
+        <div class="container px-2 px-lg-5">
+          <div class="row">
+            <div class="col col-1 col-sm-1">
+              <img id="logo" src="./assets/logo.png" alt="logo" />
+            </div>
+            <div class="col col-10 col-md-10 text-center text-white">
+              <h4 class="display-4">Proyecto ciclo 4 - Desarrollo Web</h4>
+            </div>
+            <div class="col col-1 col-sm-1">
+              <img id="logo2" src="./assets/logo2.png" alt="logo" />
+            </div>
+          </div>
+          <div class=""></div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
+
     <!-- Section-->
     <div class="container">
       <div class="row">
@@ -87,34 +97,34 @@
       </div>
     </div>
     <!-- Footer-->
-    <footer class="text-center text-white" style="background-color: #8b8c3c">
-      <!-- Grid container -->
-      <div class="container p-4 pb-0">
-        <!-- Section: CTA -->
-        <section class="" v-if="!is_auth">
-          <p class="d-flex justify-content-center align-items-center">
-            <span class="me-3">Registrate para poder comprar</span>
-            <router-link to="/SignUp"
-              ><button class="btn btn-light btn-outline-dark btn-rounded">
-                <span class="me-3 mx-3 text-md-start text-center"
-                  >Registrate!</span
-                >
-              </button></router-link
+    <footer
+      class="miFooter text-center text-white"
+      style="background-color: #3f3f24"
+    >
+      <div class="container">
+        <div class="row py-1">
+          <div class="col mt-2">
+            <section class="" v-if="!is_auth">
+              <span class="me-3 text-md-start">Registrate para poder comprar</span>
+              <router-link to="/SignUp"
+                ><button class="btn btn-light btn-outline-dark btn-rounded">
+                  <span class="me-3 mx-3 text-md-start text-center"
+                    >Registrate!</span
+                  >
+                </button></router-link
+              >
+            </section>
+          </div>
+          <div class="miCopy col col-md-4 text-start py-3">
+            © 2021 Copyright:
+            <a
+              class="text-white"
+              href="https://www.misiontic2022.gov.co/portal/"
+              >MisiónTic2022</a
             >
-          </p>
-        </section>
-        <!-- Section: CTA -->
+          </div>
+        </div>
       </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.5)">
-        © 2021 Copyright:
-        <a class="text-white" href="https://www.misiontic2022.gov.co/portal/"
-          >MisiónTic2022</a
-        >
-      </div>
-      <!-- Copyright -->
     </footer>
 
     <!-- Footer -->
@@ -127,6 +137,7 @@ export default {
 
   data: function () {
     return {
+      quantity:0,
       is_auth: false,
     };
   },
@@ -173,8 +184,7 @@ export default {
 };
 </script>
 
-
-<style lang="scss">
+<style lang="scss" scope="this api replaced by slot-scope in 2.5.0+">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -204,8 +214,34 @@ export default {
   width: 200px;
 }
 
-.logout-Button{
-    border: none;
-    background-color: #f8f9fa;
+.logout-Button {
+  border: none;
+  background-color: #f8f9fa;
 }
+
+.minav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.miHeader {
+  width: 100%;
+}
+
+.miFooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-block-end: 0;
+  justify-content: flex-end;
+}
+
+.miCopy {
+  display: -webkit-inline-flex;
+  flex-wrap: wrap;
+  background-color: #3f3f24;
+}
+
+
 </style>

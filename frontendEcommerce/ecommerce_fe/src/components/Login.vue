@@ -45,7 +45,8 @@ export default {
     return {
       user: {
         username: "",
-        password: ""
+        password: "",
+        name_user: "",
       }
     }
   },
@@ -68,7 +69,7 @@ export default {
               lastname: result.data.user.last_name,
               email: result.data.user.email,
               message: result.data.message,
-            
+              
             }
            
             // console.log(dataLogin)
