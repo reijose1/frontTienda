@@ -1,8 +1,8 @@
 <template>
   <div id="body">
-    <div class="container h-100 py-5">
-      <div class="d-flex justify-content-center align-items-center h-100">
-        <div class=" myCard card py-5">
+    <div class="container h-150">
+      <div class="d-flex justify-content-center align-items-center">
+        <div class=" myCard card">
           <div class="card-header">
             <h3>Registro de Usuarios</h3>
             <span class="card-title">Complete los siguientes datos para crear una cuenta</span>
@@ -107,6 +107,8 @@ h3 {
   position: absolute;
   /*backdrop-filter: blur(20px);*/
   border-radius: 15px;
+  margin-top: 15em;
+  margin-bottom: 5em;
 }
 .card-header,
 .card-footer {
@@ -123,4 +125,5 @@ input {
   color: #ddd;
   outline: none;
 }
+
 </style>
