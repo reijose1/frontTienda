@@ -25,8 +25,8 @@ i<template>
               <p class="card-text">
                 Puedes ir a pagar tu pedido con total seguridad.
               </p>
-              <router-link class="miBtnUn btn btn-secondary list-group-item" to="/cartTable"
-                ><div class="py-3 my-1"><h5 class="text-black fw-bold">Llevame Allí</h5></div></router-link
+              <router-link class="miBtnUn btn btn-info list-group-item" to="/cartTable"
+                ><div class="py-3 my-1"><h5 class="text-black-50 fw-bold">Llevame Allí</h5></div></router-link
               >
             </div>
           </div>
@@ -35,14 +35,14 @@ i<template>
           <div class="miCard card">
             <div class="card-header"><strong><h4 class="text-color-light fw-bold">Nuestro Mercado</h4></strong></div>
             <img class="miImgChiquita" 
-            src="https://bodytech.com.co/uploads/post/f64caff5332b44ab939e57785a94e367/mercado-compras-saludables-ideales-1_1920x854.jpg" alt="pagar"/>
+            src="https://www.elpais.com.co/files/article_main_small/uploads/2018/04/15/5ad40670aedc6.jpeg" alt="pagar"/>
             <div class="card-body d-grid gap-1">
               <p class="card-text">
                 Puedes continuar agregando productos a tu carrito si lo deseas.
               </p>
-              <router-link class="btn btn-secondary list-group-item" to="/"
+              <router-link class="miBtnUn btn btn-info list-group-item" to="/"
                 >
-                <div class="py-3 my-1"><h5 class="text-black fw-bold">Llevame Allí</h5> </div></router-link
+                <div class="py-3 my-1"><h5 class="text-black-50 fw-bold">Llevame Allí</h5> </div></router-link
               >
             </div>
           </div>
@@ -57,9 +57,9 @@ i<template>
                 Queremos tenerte siempre con nosotros, pero si debes ausentarte,
                 esperamos verte pronto por acá.
               </p>
-              <router-link class="btn btn-outline-dark btn-rounded list-group-item" to="/Login"
+              <router-link class="miBtnUn btn btn-info list-group-item" to="/Login"
                 >
-                <div class="py-2"><h5 class="text-black py-0 fw-bold">
+                <div class="py-2"><h5 class="text-black-50 py-0 fw-bold">
                   Cerrar Sesión</h5>
                 </div>
                 </router-link
@@ -104,6 +104,7 @@ export default {
   background-color:darkslategrey!important;
   height: 400px;
   color: aliceblue;
+  border-radius: 15px !important;
 }
 
 .card-user {
@@ -121,10 +122,10 @@ export default {
 
 .miImgChiquita{
   margin: 0 auto;
-  padding: 0.5em;
-  height: 150px;
-  width: 200px;
+  padding: 0.1em;
+  height: 140px;
+  width: 220px;
   justify-content: center;
-  
+  border-radius: 20px;
 }
 </style>
