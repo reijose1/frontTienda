@@ -1,4 +1,12 @@
 <template>
+<div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex flex-column">
+            <div class="h3">Mis productos para ordenar</div>
+        </div>
+        <div class="ml-auto btn"><span class="fas fa-cog"></span></div>
+        <div class="btn" id="sub"> + Agregar a mis favoritos </div>
+    </div>
+    <div id="table" class="bg-white rounded">
   <div class="container table-responsive">
     <table id="cart" class="table table-hover table-sm">
       <thead>
@@ -43,6 +51,7 @@
         </tr>
       </tfoot>
     </table>
+  </div>
   </div>
 </template>
 

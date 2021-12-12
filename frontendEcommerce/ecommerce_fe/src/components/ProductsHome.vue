@@ -43,17 +43,17 @@
           </div>
         </div>
     <div>
-      <div class="mySecCat d-flex justify-content-end mb-1">        
+      <div class="mySecCat d-flex justify-content-end mb-5 ">        
         <!--seccion de las categorias -->
         <div class="mySecCat-2 col mb-1">
           <div class="card" v-for="product in products" :key="product.id">
             <!-- Product image-->
-            <img class="card-img-top" v-bind:src="product.image" alt="..." />
+            <img class="card-img-top pt-1 mt-1" v-bind:src="product.image" alt="..." />
             <!-- Product details-->
             <div class="card-body p-4">
               <div class="text-center">
                 <!-- Product name-->
-                <h5 class="fw-bolder">{{ product.name }}</h5>
+                <h6 class="fw-bolder">{{ product.name }}</h6>
                 <!-- Product Unidad de Medida-->
                 <div
                   class="d-flex justify-content-center small text-warning mb-2"
@@ -67,7 +67,7 @@
             <!-- Product actions-->
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
               <div class="text-center">
-                <button class="btn btn-outline-dark mt-auto">Agrega</button> &nbsp;
+                <button class="btn btn-outline-dark mt-auto">Agrega</button> &nbsp;&nbsp;&nbsp;&nbsp;
                 <button class="btn btn-outline-dark mt-auto" v-on:click="verDetalle(product)">
                   Ver mas
                 </button>
@@ -168,7 +168,7 @@ export default {
 
 .card {
   width: 300px;
-  height: 450px;
+  height: 375px;
   margin: 5px;
   padding: 2px;
   border: 2px solid black;
@@ -177,7 +177,7 @@ export default {
 
 .card img {
   width: 50%;
-  height: 200px;
+  height: 150px;
   display: inline-flex;
   margin-left: 70px;
 }
