@@ -1,23 +1,17 @@
 <template>
-  <section class="py-5">
-    <div class="container px-4 px-lg-5 my-5">
-      <div class="row gx-4 gx-lg-5 align-items-center">
-        <div class="col-md-6">
-          <img class=" myImg card-img-top mb-5 mb-md-0" v-bind:src="image" alt="..." />
+  <section class="py-2">
+    <div class="container px-4 px-lg-5 my-2 mb-5 pb-5 py-5">
+      <div class="row gx-4 gx-lg-2 align-items-center">
+        <div class="col-md-3">
+          <img class=" myImg card-img-top mb-2 mb-md-0" v-bind:src="image" alt="..." />
         </div>
-        <div class="col-md-6">
+        <div class="col-md-9">
           <div class="small mb-1">Categoria: {{ category_product }}</div>
-          <h2 class="display-5 fw-bolder">{{ name }}</h2>
-          <h4 class="small mb-3 fw-light">
-            Unidad de Medida: {{ measure_unit }}
-          </h4>
-          <div class="fs-5 mb-5">
-            <span>COP $ {{ price }}</span>
-          </div>
-          <h4 class="small mb-3 fw-bolder">Descripción:</h4>
-          <p class="lead">
-            {{ description }}
-          </p>
+          <h3 class="display-5 d-flex justify-content-center fw-bolder">{{ name }}</h3>
+          <h5 class="small mb-3 fw-light">Unidad de Medida: {{ measure_unit }}</h5>
+          <div class="fs-5 mb-2"><span>COP $ {{ price }}</span></div>
+          <h5 class="small mb-3 fw-bolder">Descripción:</h5>
+          <p class="lead justify-content-between">{{ description }} </p>
           <div class="d-flex justify-content-center">
             <h4 class="small mb-3 fw-light">
               Cantidad disponible: <h4> {{ stock }} </h4>
@@ -64,7 +58,9 @@ export default {
 
 <style>
   .myImg {
-    height: 600px;
-    width: 500px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    height: 400px;
+    width: 300px;
   }
 </style>
